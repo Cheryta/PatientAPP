@@ -1,93 +1,29 @@
-#header
-{
-    display: flex;
-    background-color: white;    
-    border: 2px solid rgb(197, 195, 195);
-    border-radius: 1em;
-    width: 95%;
-    height: 30%;
-    margin-left: 2em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    justify-content: space-between;
-}
-
-.bienvenue_bircof
-{
-    margin-top:1.5em;
-}
-
-.images
-{
-  display: flex;
-}
-
-.image
-{
-    display: flex;
-    width: 170px;
+.navbar {
+    width: 100%;
     height: 100px;
-    border: 2px solid rgb(36, 36, 139);
-    border-radius: 1em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: 1em;
-    margin-right: 1em;
 }
-
-.titre_bircof
-{
-    text-align: center;
-    text-transform: uppercase;
-    color: green;
+.text a {
+    color: #fff;
+    justify-content: space-between;
+    text-decoration: none;
+    font-family:algerian;
+    font-size: 22px;
+    letter-spacing: 3px;
 }
-
-#formulaire_bircof
-{
-
-width: 95%;
-border: 1px solid green;
-margin-left: 2em;
-border-radius: 1em;
-background-color: white;
-margin-top: 1em;
-
-
-}
-.form_bircof
-{
-    margin: 2em;
-  
-}
-
-.buttons
-{
-    display: flex;
-    flex-direction: row;
-    justify-content:flex-end;
-    margin-right:1.8em;
-    margin-top: 2em;
-}
-.button{
-    display: flex;
-    margin: 0.5em;
-}
-
-.footer_bircof
+.footer
 {   
-    display: flex;
+    height: 55px;
     justify-content: center;
     text-align: center;
-    background-color: white;
-    border: 2px solid rgb(197, 195, 195);
-    border-radius: 0.6em;
-    width: 95%;
-    height: 20%;
-    margin-top: 2em;
-    margin-bottom: 0.5em;
-    margin-left: 2em;
+    font-family: 'papyrus';
+    color: #fff;
 }
 
+.carousel-inner {
+    width: 100%;
+    height: 450px;
+}
+/*
 #btn-ajout{
     background-color: white;
     color: black;
@@ -112,3 +48,4 @@ margin-top: 1em;
 .cont-table{
     background-color: white;
 }
+*/
