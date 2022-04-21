@@ -12,8 +12,8 @@ create table Patient
    addresse             varchar(254),
    telephone            int,
    age                  int,
-   gSanguin             varchar(254),
+   g_sanguin             varchar(254),
    antecedant           varchar(254),
-   mActuelle            varchar(254),
+   m_actuelle            varchar(254),
    primary key (id)
 );
