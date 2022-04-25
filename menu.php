@@ -31,8 +31,5 @@
    <script src="./js/bootstrap.bundle.js"></script>
    <script src="./js/bootstrap.bundle.min.js"></script>
    <script src="./js/bootstrap.min.js"></script> 
-   <script src="./js/main.js"></script>
-   <script src="./js/popper.min.js"></script>
-   <script src="./js/jquery-3.3.3.slim.min.js"></script>
 </body>
 </html>

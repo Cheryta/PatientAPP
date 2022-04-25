@@ -6,6 +6,11 @@
     display: flex;
     margin: 10px 20px 20px 100px;
 }
+.container{
+    width:500px;
+    margin:0 auto;
+    margin-top:3%;
+}
 .container1{
     width:450px;
     margin:0 auto;

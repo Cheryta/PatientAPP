@@ -1,7 +1,7 @@
 <?php
 require_once './fonction/base.php';
 require_once 'autoload.php';
-
+/*
 $bd=bd();
 $patient_ctrl =new PatientController($bd);
 
@@ -10,7 +10,7 @@ if(isset($_GET['id']))
     $id=$_GET['id'];
     $valuer=$patient_ctrl->get((int)$id);
 }
-
+*/
 if(isset($_REQUEST['update_id']))
 {
 	try
@@ -28,7 +28,7 @@ if(isset($_REQUEST['update_id']))
 	}
 	
 }
-
+*/
 if(isset($_REQUEST['btn_update']))
 {
 	
@@ -41,6 +41,36 @@ if(isset($_REQUEST['btn_update']))
 	$g_sanguin	= $_REQUEST['g_sanguin'];
 	$antecedant	= $_REQUEST['antecedant'];
     $m_actuelle	= $_REQUEST['m_actuelle'];
+    
+    if(empty($nom)){
+		$errorMsg="Svp entrez Nom";
+	}
+	else if(empty($prenom)){
+		$errorMsg="Svp entrez le Prenom";
+	}	
+	else if(empty($genre)){
+		$errorMsg="Svp selectionnez le genre";
+	}
+	else if(empty($addresse)){
+		$errorMsg="Svp entrez l'adresse'";
+	}
+    else if(empty($telephone)){
+		$errorMsg="Svp entrez le numero de telephone";
+	}	
+	else if(empty($age)){
+		$errorMsg="Svp entrez l'age'";
+	}
+	else if(empty($g_sanguin)){
+		$errorMsg="Svp selectionnez le groupe sanguin";
+	}
+    else if(empty($antecedant)){
+		$errorMsg="Svp entrez les antecedants medicaux";
+	}	
+	else if(empty($m_actuelle)){
+		$errorMsg="Svp entrez la maladie actuelle";
+	}
+	else
+	{
 		
 		try
 		{
@@ -69,7 +99,8 @@ if(isset($_REQUEST['btn_update']))
 		{
 			echo $e->getMessage();
 		}	
-	}	
+	}
+}	
 ?>
 
 <!DOCTYPE html>
@@ -182,7 +213,7 @@ if(isset($_REQUEST['btn_update']))
                                   echo $valuer->getM_actuelle(); 
                                }
                             ?>
-                            </textarea>
+                    </textarea>
 
                     <div class="bouton">
                         <div class='bouton1'>
@@ -204,4 +235,3 @@ if(isset($_REQUEST['btn_update']))
         
     </body>
 </html>
-
