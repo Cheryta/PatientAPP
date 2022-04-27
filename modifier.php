@@ -1,108 +1,26 @@
 <?php
-require_once './fonction/base.php';
-require_once 'autoload.php';
-/*
-$bd=bd();
-$patient_ctrl =new PatientController($bd);
+    require_once './fonction/base.php';
+    require_once 'autoload.php';
 
-if(isset($_GET['id']))
-{
-    $id=$_GET['id'];
-    $valuer=$patient_ctrl->get((int)$id);
-}
-*/
-if(isset($_REQUEST['update_id']))
-{
-	try
-	{
-		$id = $_REQUEST['update_id']; //obtenir la mise à jour de la liste_article à travers "$id" variable
-		$select_stmt = $bd->prepare('SELECT * FROM Patient WHERE id =:id');
-		$select_stmt->bindParam(':id',$id);
-		$select_stmt->execute(); 
-		$bd = $select_stmt->fetch(PDO::FETCH_ASSOC);
-		extract($bd);
-	}
-	catch(PDOException $e)
-	{
-		$e->getMessage();
-	}
-	
-}
-*/
-if(isset($_REQUEST['btn_update']))
-{
-	
-	$nom	= $_REQUEST['nom'];	
-	$prenom	= $_REQUEST['prenom'];
-	$genre	= $_REQUEST['genre'];
-	$addresse	= $_REQUEST['addresse'];
-    $telephone	= $_REQUEST['telephone'];	
-	$age	= $_REQUEST['age'];
-	$g_sanguin	= $_REQUEST['g_sanguin'];
-	$antecedant	= $_REQUEST['antecedant'];
-    $m_actuelle	= $_REQUEST['m_actuelle'];
-    
-    if(empty($nom)){
-		$errorMsg="Svp entrez Nom";
-	}
-	else if(empty($prenom)){
-		$errorMsg="Svp entrez le Prenom";
-	}	
-	else if(empty($genre)){
-		$errorMsg="Svp selectionnez le genre";
-	}
-	else if(empty($addresse)){
-		$errorMsg="Svp entrez l'adresse'";
-	}
-    else if(empty($telephone)){
-		$errorMsg="Svp entrez le numero de telephone";
-	}	
-	else if(empty($age)){
-		$errorMsg="Svp entrez l'age'";
-	}
-	else if(empty($g_sanguin)){
-		$errorMsg="Svp selectionnez le groupe sanguin";
-	}
-    else if(empty($antecedant)){
-		$errorMsg="Svp entrez les antecedants medicaux";
-	}	
-	else if(empty($m_actuelle)){
-		$errorMsg="Svp entrez la maladie actuelle";
-	}
-	else
-	{
-		
-		try
-		{
-			if(!isset($errorMsg))
-			{
-				$update_stmt=$db->prepare('UPDATE Patient SET nom=:nom, prenom=:prenom, genre=:genre, addresse=:addresse, telephone=:telephone, age=:age, g_sanguin=:g_sanguin, antecedant=:antecedant, m_actuelle=:m_actuelle WHERE id=:id'); //sql update query
-				$update_stmt->bindParam(':nom',$nom);
-				$update_stmt->bindParam(':prenom',$prenom);
-				$update_stmt->bindParam(':genre',$genre);
-				$update_stmt->bindParam(':addresse',$addresse);
-                $update_stmt->bindParam(':telephone',$telephone);
-				$update_stmt->bindParam(':age',$age);
-				$update_stmt->bindParam(':g_sanguin',$g_sanguin);
-				$update_stmt->bindParam(':antecedant',$antecedant);
-                $update_stmt->bindParam(':m_actuelle',$m_actuelle);
-				$update_stmt->bindParam(':id',$id);
-				 
-				if($update_stmt->execute())
-				{
-					$updateMsg="Mise à jour avec succès.......";	//message de mise à jour
-					header("refresh:3;liste.php");	//refresh 3 second and redirect to liste_article.php page
-				}
-			}	
-		}
-		catch(PDOException $e)
-		{
-			echo $e->getMessage();
-		}	
-	}
-}	
+    $bd=bd();
+    $patient_ctrl =new PatientController($bd);
+
+    if(isset($_GET['id']))
+    {
+        $id=$_GET['id'];
+        $valuer=$patient_ctrl->get((int)$id);
+    }
+
+    if(isset($_POST['nom']) and $_POST['prenom'] and $_POST['genre'] and $_POST['addresse'] and $_POST['telephone'] and $_POST['age']
+        and $_POST['g_sanguin']  and $_POST['antecedant'] and $_POST['m_actuelle'] and isset($_POST['id']))
+        {
+            print_r($_POST);
+            $patient_ctrl =new PatientController($bd);
+            $patient=new Patient($_POST);
+            $patient_ctrl->modifier($patient);
+            header("location: liste.php");
+        }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -148,7 +66,7 @@ if(isset($_REQUEST['btn_update']))
             
                 <form action="modifier.php" method="POST">
                     <div class="texte4">
-                        <p> Patient N° <?= $valuer->getId() ?></p>
+                        <p> Patient N° <?= $valuer->getId() ?> </p>
                     </div>
                     
                     <label><b>Nom</b></label>
@@ -217,7 +135,7 @@ if(isset($_REQUEST['btn_update']))
 
                     <div class="bouton">
                         <div class='bouton1'>
-                            <a type="button" class="btn btn-danger" name="btn_update" href="liste.php" onclick='return confirm("Cliquez OK pour modifier ?")'>MODIFIER</a>
+                            <a type="button" class="btn btn-danger"  href="liste.php" onclick='return confirm("Cliquez OK pour modifier ?")'>MODIFIER</a>
                         </div>
                         <div class='bouton1'>
                             <a type="button" class="btn btn-dark" href="liste.php"> RETOUR</a>

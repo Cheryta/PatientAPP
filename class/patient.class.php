@@ -47,14 +47,14 @@ class Patient
         return $this->genre;
     }
 
-    public function getTelephone()
-    {
-        return $this->telephone;
-    }
-
     public function getAddresse()
     {
         return $this->addresse;
+    }
+    
+    public function getTelephone()
+    {
+        return $this->telephone;
     }
 
     public function getAge()

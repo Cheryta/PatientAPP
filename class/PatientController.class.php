@@ -61,8 +61,8 @@ class PatientController
     //echo $patient->getId();
      try{ 
             $sql=$this->_db->prepare("UPDATE  patient SET nom =:nom, prenom =:prenom, genre =:genre, 
-            addresse =:addresse, telephone =:telephone, age=:age, g_sanguin=:g_sanguin, m_actuelle=:m_actuelle,
-            antecedant=:antecedant WHERE id=:id");
+            addresse =:addresse, telephone =:telephone, age=:age, g_sanguin=:g_sanguin, antecedant=:antecedant,
+            m_actuelle=:m_actuelle WHERE id=:id");
             $d=$sql->execute(array('nom'=>$patient->getNom(),
             'prenom'=>$patient->getPrenom(),
             'genre'=>$patient->getGenre(),
@@ -70,8 +70,8 @@ class PatientController
             'telephone'=>$patient->getTelephone(),
             'age'=>$patient->getAge(),
             'g_sanguin'=>$patient->getG_sanguin(),
-            'm_actuelle'=>$patient->getM_actuelle(),
             'antecedant'=>$patient->getAntecedant(),
+            'm_actuelle'=>$patient->getM_actuelle(),
             'id'=>$patient->getId()
           ));  
      } catch (Exception $ex) {

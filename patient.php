@@ -39,7 +39,7 @@ and $_POST['g_sanguin'] and $_POST['antecedant'] and $_POST['m_actuelle'])
             <div class="container">
                 <!-- zone de connexion -->
             
-                <form action="insertion.php" method="POST">
+                <form action="patient.php" method="POST">
                     <div class="texte4">
                         <p>Ajouter un Patient</p>
                     </div>
